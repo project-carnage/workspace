@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: 'rabbitmq'
+    privileged: true
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=carnage
+      - RABBITMQ_DEFAULT_PASS=carnage
+    volumes:
+      - .docker-conf/rabbitmq/data/:/var/lib/rabbitmq:z
+      - .docker-conf/rabbitmq/log/:/var/log/rabbitmq
